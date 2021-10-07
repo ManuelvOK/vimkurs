@@ -1,0 +1,151 @@
+Motions (in normal mode)
+==========================
+usage: [count] [motion]
+
+h:      move cursor left
+j:      move cursor down
+k:      move cursor up
+l:      move cursor right
+
+w W:    jump to next start of a word
+e E:    jump to next end of a word
+b B:    jump to previous start of a word
+
+^:      jump to start of line (indented)
+0:      jump to start of line (column 0)
+$:      jump to end of line
+
+(:      jump to previous start of sentence
+):      jump to next end of sentence
+{:      jump to start of paragraph
+}:      jump to end of paragraph
+
+%:      jump to brace match
+
+gg:     start of file / go to line
+G:      end of file / go to line
+
+t<char>:    jump before next <char> in line
+T<char>:    jump behind previous <char> in line
+f<char>:    jump to next <char> in line
+F<char>:    jump to previous <char> in line
+
+;:  repeat last t, T, f or F movement in same direction
+,:  repeat last t, T, f or F movement in opposite direction
+
+Switching to insert mode
+========================
+
+i:  (insert) at current position
+I:  at the start of current line
+a:  (append) behind current position
+A:  after the end of the current line
+o:  at new line below current position
+s:  (substitute) delete character unter cursor and enter insert mode
+S:  clear whole line and enter insert mode
+C:  (change) clear rest of line and enter insert mode
+
+Esc C-c: exit into normal mode
+
+Commands
+========
+u:   undo
+C-r: redo
+.:   do last input action again
+
+Usage:  [command][count][motion]
+
+d:  delete
+c:  "change" - delete and go to insert mode
+y:  yank (copy to internal clipboard)
+g?: rot13 encrypt
+
+Examples:
+y5j:    copy this and the next 5 lines into internal clipboard
+d2fz:   delete until and including the 2nd appereance of character 'z' in line
+
+Shortcuts:
+dd: delete current line
+D:  delete
+cc: change current line
+S:  synonym for cc
+C:  change rest of line
+yy: yank current line
+Y:  yank rest of line
+
+----------------------
+Usage: [count][command]
+
+p:  paste (from internal clipboard)
+s:  substitute character under (and after) cursor
+x:  delete character under (and after) cursor
+~:  toggle case of character under (and after) cursor
+
+
+Text Objects
+============
+
+w:  word
+W:  WORD (including special chars)
+{:  braces block. Also works for ()[]{}<>"'
+s:  sentence
+p:  paragraph
+
+Motion modifiers:
+i: in
+a: around
+
+Examples:
+dap:    "delete a paragraph" - delete the current block of adjacent non empty lines
+ciw:    "change inner word" - delete word and go into insert mode
+ci(:    "change inner block" - change everything in the pair of parentheses the cursor is in
+
+  see ":help text-objects" for more awesome stuff
+
+Command mode
+============
+
+:w          write file to disk
+:q          quit vim (current buffer)
+:wq         write to disk and quit
+:x          write to disk and quit
+:e <file>   edit file
+:help       open vim help
+
+Semantic Editing
+================
+
+gf: go to file
+gd: go to local declaration
+gD: go to global definition
+*:  search forward for word under cursor
+#:  search backward for word under cursor
+
+Visual Modes
+============
+v:      enter visual mode
+V:      enter visual line mode
+CTRL+v: enter visual block mode
+
+Makros
+======
+qq: start makro recording
+q:  end makro recording (only works if makro gets currently recorded)
+@q: run makro
+
+  this actually records the makro to the q register. you can use every other register like the
+  w register with qw and @w
+
+Buffer, Windows/Splits, Tabs
+============================
+:split          split window horizontally
+CTRL+w s:       shortcut for :split
+:vsplit         split window vertically
+CTRL+w v:       shortcut for :vsplit
+
+CTRL+w hjkl:    navigate through windows
+:q              close only current window
+
+Search and Replace
+==================
+:%s/foo/bar/g   replace every occurence of "foo" with "bar" in current buffer
