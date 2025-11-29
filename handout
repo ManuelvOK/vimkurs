@@ -1,3 +1,16 @@
+# vim: ft=markdown
+
+QoL
+===
+
+:syntax on
+:set mouse=a
+:set ttymouse=sgr
+:set number
+:set relativenumber
+:set cursorline
+:set hlsearch
+
 Motions (in normal mode)
 ==========================
 usage: [count] [motion]
@@ -10,10 +23,14 @@ l:      move cursor right
 w W:    jump to next start of a word
 e E:    jump to next end of a word
 b B:    jump to previous start of a word
+ -- case defines what is considered a "word":
+ --  - lower case: alpha-numeric
+ --  - upper case: non-whitespace
 
 ^:      jump to start of line (indented)
 0:      jump to start of line (column 0)
 $:      jump to end of line
+ -- ^ and $ shamelessly stolen from regex
 
 (:      jump to previous start of sentence
 ):      jump to next end of sentence
@@ -25,10 +42,10 @@ $:      jump to end of line
 gg:     start of file / go to line
 G:      end of file / go to line
 
-t<char>:    jump before next <char> in line
-T<char>:    jump behind previous <char> in line
-f<char>:    jump to next <char> in line
-F<char>:    jump to previous <char> in line
+t<char>:    **To** jump before next <char> in line
+T<char>:    **To** jump behind previous <char> in line
+f<char>:    **Find** jump to next <char> in line
+F<char>:    **Find** jump to previous <char> in line
 
 ;:  repeat last t, T, f or F movement in same direction
 ,:  repeat last t, T, f or F movement in opposite direction
